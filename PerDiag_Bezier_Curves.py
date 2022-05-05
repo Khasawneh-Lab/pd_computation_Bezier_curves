@@ -1,11 +1,12 @@
-# -*- coding: utf-8 -*-
+
 """
-This library includes the codes to compute approximated persistence diagrams using Bezier curve approach
+Author: Melih Can Yesilli
+Date: 5/2/22
+contact: yesillim@msu.edu
+
+Description:This library includes the codes to compute approximated persistence diagrams using Bezier curve approach
 explained in S. Tsuji and K. Aihara, “A fast method of computing persistent homology of time series data,” 
 in ICASSP 2019- 2019 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), IEEE, may 2019.
-
-
-
 
 """
 import numpy as np
@@ -26,7 +27,6 @@ plt.rc('font', family='serif')
 def Bezier_Curve(group,t,dim):
     """
     
-
     Parameters
     ----------
     group : 2D np.array
@@ -35,7 +35,6 @@ def Bezier_Curve(group,t,dim):
         The array that includes the values for parameterization variable, t.
     dim: int
         embedding dimension of the point cloud or group of points
-
     Returns
     -------
     P : 2D np.array
@@ -46,7 +45,6 @@ def Bezier_Curve(group,t,dim):
         The matrix in the matrix form of fitting Bezier curves. See original paper for more details
     b : 2D np.array
         b in matrix form of fitting Bezier curves. See original paper for more details
-
     """
     A = np.zeros((4,4))
     b = np.zeros((4,dim))
@@ -85,7 +83,6 @@ def Bezier_Curve(group,t,dim):
 def BC_coeffs(embedded_data,n_samples,spg,r,dim):
     """
     
-
     Parameters
     ----------
     embedded_data : 2D np.array
@@ -98,12 +95,10 @@ def BC_coeffs(embedded_data,n_samples,spg,r,dim):
         Number of line segments for each group
     dim : int
         embedding dimension
-
     Returns
     -------
     param_coeffs : 2D np.array
         The coefficients for the lines generated using spg and r parameters.
-
     """       
     # number of points in point cloud
     n_samples = len(embedded_data) 
@@ -186,17 +181,14 @@ def BC_coeffs(embedded_data,n_samples,spg,r,dim):
 def compDist_Segments(param_coeffs):
     """
     
-
     Parameters
     ----------
     param_coeffs : 2D np.array
         Coefficients for line segments generated using Bezier curves
-
     Returns
     -------
     distance_mat : 2D np.array
         Distance matrix between line segments generated using spg and r parameters
-
     """
     # generate the combinations between line segments
     A = np.linspace(0,len(param_coeffs)-1,len(param_coeffs)).astype(int)
@@ -309,7 +301,7 @@ if __name__ == '__main__':
     R=2
     r_sys=1
     spg=10
-    r=3
+    r=2
     dim=3
     
     t_s =np.linspace(0,50*pi,n_samples)
