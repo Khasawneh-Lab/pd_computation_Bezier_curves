@@ -284,12 +284,14 @@ def plot_perDiag(perDiag,perDiag_GP,dim):
     ax1.set_ylabel('Death Time', fontsize = 18)   
     ax1.tick_params(labelsize=18)
     ax1.legend(['$H_{0}$','$H_{1}$','$H_{2}$'], fontsize = 15,loc='lower right')    
+    ax1.set_title('Approximated Diagram')
     
-    ax2.plot([0,max(perDiag[1][:,1])],[0,max(perDiag[1][:,1])],'--k')
+    ax2.plot([0,max(perDiag_GP[1][:,1])],[0,max(perDiag_GP[1][:,1])],'--k')
     ax2.set_xlabel('Birth Time',fontsize = 18)
     ax2.set_ylabel('Death Time', fontsize = 18)   
     ax2.tick_params(labelsize=18)
     ax2.legend(['$H_{0}$','$H_{1}$','$H_{2}$'], fontsize = 15,loc='lower right')     
+    ax2.set_title('Diagram from Ripser')
     
     fig.subplots_adjust(wspace=0.5)
     
